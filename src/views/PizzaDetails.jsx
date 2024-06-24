@@ -1,11 +1,12 @@
 import { useParams } from "react-router-dom";
-import { Card, Container } from "react-bootstrap";
-import { useContext} from "react";
+import { Button, Card, Container } from "react-bootstrap";
+import { useContext } from "react";
 import { PizzasContext } from "../context/ContextPizzas";
+import Emoji from "react-emojis";
 
 const PizzaDetails = () => {
   const { name } = useParams();
-  const { pizzas, loading } = useContext(PizzasContext);
+  const { pizzas, loading, carrito, setCarrito } = useContext(PizzasContext);
   console.log(name);
   console.log(pizzas);
   console.log(loading);
@@ -22,17 +23,33 @@ const PizzaDetails = () => {
       .join(" ");
   }
 
+  const handleAñadir = (tipo, precio, img) => {
+    const existe = carrito.some((el) => el.tipo === tipo);
+    if (existe) {
+      setCarrito(
+        carrito.map((el) =>
+          el.tipo === tipo ? { ...el, cant: el.cant + 1 } : el
+        )
+      );
+    } else {
+      const copiaCarrito = carrito;
+      copiaCarrito.push({
+        tipo: tipo,
+        precio: precio,
+        cant: 1,
+        img: img,
+      });
+      setCarrito(copiaCarrito.map((el) => el));
+    }
+  };
+
   if (loading) {
     return <div>cargando</div>;
   } else {
     const index = pizzas.findIndex((el) => el.name == name);
     return (
-      <div className="mt-5">
-        <Card
-          className="d-flex flex-row m-auto tarjeta"
-          text="white"
-          style={{ width: "70%" }}
-        >
+      <div className="pt-5">
+        <Card className="d-flex flex-lg-row m-auto tarjeta" text="white">
           <Card.Img
             variant="top"
             src={pizzas[index].img}
@@ -48,9 +65,34 @@ const PizzaDetails = () => {
 
             <ul>
               {pizzas[index].ingredients.map((el, index) => (
-                <li key={index}>{primeraMayuscula(el)}</li>
+                <li key={index}>
+                  <Emoji emoji="pizza" />
+                  {primeraMayuscula(el)}
+                </li>
               ))}
             </ul>
+            <Card.Footer className="d-lg-flex justify-content-between align-items-center">
+              <div className="precio">
+                {"Precio: $" +
+                  pizzas[index].price
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+              </div>
+              <Button
+                style={{ width: "140px" }}
+                variant="danger"
+                onClick={() => {
+                  handleAñadir(
+                    pizzas[index].name,
+                    pizzas[index].price,
+                    pizzas[index].img
+                  );
+                  console.log(carrito);
+                }}
+              >
+                Añadir
+              </Button>
+            </Card.Footer>
           </Card.Body>
         </Card>
       </div>

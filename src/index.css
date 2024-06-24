@@ -3,6 +3,7 @@
   line-height: 1.5;
   font-weight: 400;
 
+
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
@@ -15,11 +16,21 @@
 
 body {
   background-color: #242424;
+  
+}
+
+.contenido {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 44px;
+  height: 100vh;
 }
 
 .navbar {
   font-size: large;
 }
+
 
 .header-container {
   position: relative;
@@ -60,9 +71,33 @@ body {
   padding: 50px 100px;
 }
 
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+
 .tarjeta {
   background-color: #381001;
   border: 8px solid #381001;
+  width: 75%;
+}
+
+.tabla-carrito {
+  width: 70%;
+}
+
+.tabla-carrito td {
+  align-self: center;
+  vertical-align: baseline;
+  font-size: 24px;
+}
+
+.precio {
+  font-weight: 500;
+  font-size: 28px;
+  text-align: center;
+  padding-bottom: 16px;
 }
 
 @media screen and (max-width: 1500px) {
@@ -80,6 +115,16 @@ body {
   .gallery {
     padding: 50px 120px;
   }
+  .tarjeta {
+    margin: 0 10px;
+    width: 95%;
+  }
+  
+    .tarjeta img{
+      height: 100%;
+      
+  
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -99,13 +144,26 @@ body {
   }
 }
 
-
 @media screen and (max-width: 450px) {
+  .navbar {
+    padding: 0;
+  }
   .header-title {
     position: absolute;
     top: 50%;
     left: 30%;
     transform: translate(-20%, -50%);
+  }
+
+.tarjeta {
+  margin: 0 10px;
+  width: 95%;
+}
+
+  .tarjeta img{
+    height: 100%;
+    
+
   }
   .grid-columns {
     grid-template-columns: repeat(1, 1fr);
