@@ -1,16 +1,12 @@
-import { Container } from "react-bootstrap";
+import { Card, Container } from "react-bootstrap";
+import ImgHeader from "../components/ImgHeader";
+import TarjetasProductos from "../components/TarjetasProductos";
 
 const HomePage = () => {
   return (
     <>
-    <Container className=" d-flex flex-column gap-2 py-5">
-         <h1>
-        Bienvenido a <b>Happy Cake</b>
-      </h1>
-      <p className=" fs-4">El lugar de los pasteles felices</p>
- 
-    </Container>
-     
+      <ImgHeader />
+      <TarjetasProductos />
     </>
   );
 };

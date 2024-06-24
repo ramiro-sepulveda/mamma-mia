@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 const Navigation = () => {
   return (
-    <Navbar bg="danger" variant="dark">
+    <Navbar bg="danger" variant="dark" className="navbar">
       <Container className="justify-content-start gap-2">
-        <Link to="/" className="text-white ms-3 text-decoration-none">
+        <Link to="/mamma-mia" className="text-white ms-3 text-decoration-none">
            Home
         </Link>
         <Link to="/contacto" className="text-white ms-3 text-decoration-none">
