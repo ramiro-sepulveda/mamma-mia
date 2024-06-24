@@ -90,7 +90,7 @@ const PizzaDetails = () => {
                   console.log(carrito);
                 }}
               >
-                Añadir
+               <Emoji emoji="shopping-cart" /> Añadir
               </Button>
             </Card.Footer>
           </Card.Body>
