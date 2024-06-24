@@ -7,7 +7,7 @@ const Carrito = ({ clase }) => {
   let total = 0;
   const precioTotal = (array) => {
     array.forEach((el) => {
-      total += el.precio * el.cant;n
+      total += el.precio * el.cant;
     });
     console.log(total);
     return total;
